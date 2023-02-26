@@ -34,7 +34,7 @@ app.use(expressLayout);
 // Setting up express session
 app.use(session({
     name: 'csv',
-    secret : "pass",
+    secret : process.env.session_cookie_key,
     resave: true,
     saveUninitialized: true,
     coookie: {
