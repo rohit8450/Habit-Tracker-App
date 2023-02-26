@@ -5,6 +5,7 @@ const Habit = require('../models/habits');
 module.exports.home = function(req,res){
     Habit.find({},function(err,habits){
         if(err){
+            req.flash('error','Error in fetching the habits');
             Console.log('Error in fetching the habits');
             return;
         }
@@ -37,11 +38,13 @@ module.exports.createHabit = function(req,res){
         
     },function(err,newHabit){
         if(err){
+            req.flash('error','Error in creating habit');
             console.log('Error in creating habit',err);
             return;
         }
         
         console.log(newHabit);
+        req.flash('success','habit created successfully');
         return res.redirect('back');
     });
 }
@@ -50,9 +53,11 @@ module.exports.deleteHabit = function(req,res){
     let id = req.query.id;
     Habit.findByIdAndDelete(id,function(err){
         if(err){
+            req.flash('error','Error in deleting Habit');
             console.log("Error in deleting Habit");
             return;
         }
+        req.flash('success','habit deleted successfully');
         return res.redirect('back');
 
     });

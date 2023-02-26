@@ -4,6 +4,7 @@ const { json } = require('express');
 module.exports.details = function(req,res){
     Habit.find({},function(err,habits){
         if(err){
+            req.flash('error','Error in fetching the habits');
             Console.log('Error in fetching the habits');
             return;
         }
@@ -19,6 +20,7 @@ module.exports.updateHabit = function(req,res){
     // finding the habit
     Habit.findById(id,function(err,habit){
         if(err){
+            req.flash('error','not found');
             console.log("not found");
             return;
         }
@@ -42,9 +44,11 @@ module.exports.updateHabit = function(req,res){
         // updating that found habit
         Habit.findByIdAndUpdate(id,newHabit,function(err,newCreatedHabit){
             if(err){
+                req.flash('error','Error in Updating the habits');
                 console.log("Error in Updating");
                 return;
             }
+            req.flash('success','Habit Updated Successfully');
             return res.redirect('back');
         })
         

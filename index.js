@@ -7,6 +7,10 @@ dotenv.config();
 const app = express();
 const path=require('path')
 const expressLayout = require('express-ejs-layouts');
+const session = require('express-session');
+const flash = require('connect-flash');
+const customMiddlware = require('./config/middleware');
+const MongoStore = require('connect-mongo');
 
 // set view engine
 app.set('view engine','ejs');
@@ -26,6 +30,27 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.urlencoded());
 app.use(express.static('./assets'));
 app.use(expressLayout);
+
+// Setting up express session
+app.use(session({
+    name: 'csv',
+    secret : "pass",
+    resave: true,
+    saveUninitialized: true,
+    coookie: {
+      maxAge: (1000 * 60 * 100)
+    },
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_DB_URL,
+      autoRemove: 'disabled'
+    },
+    function(err){
+      console.log(err || 'connect-mongodb setup ok');
+    })
+  }));
+
+app.use(flash());
+app.use(customMiddlware.setFlash);
 
 // using router
 app.use('/',require('./routes/index'));
