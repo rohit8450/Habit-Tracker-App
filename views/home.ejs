@@ -1,0 +1,86 @@
+
+
+<link rel="stylesheet" href="/css/home.css">
+<body class="scroll">
+    
+
+<!-- container for habits -->
+<div class="container rounded bg-white shadow p-3 mb-5" id="box">
+    <!-- input to add habits -->
+    <div id="add-habit-form" class="rounded bg-blue shadow p-3 mb-5">
+        <form action="/create-habit" method="POST" >
+            <div class="form-group">
+                <label for="inputAddress">What habit you want to Create?</label>
+                <input type="text" class="form-control" id="inputAddress" name="habit" placeholder="Enter the name" required>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">What do you want to Achieve?</label>
+                <input type="text" class="form-control" id="inputAddress2" name="description" placeholder="Enter your goal" required>
+            </div>
+              
+            <div class="form-group">
+                <label for="inputEnd">End Date(Optional)</label>
+                <input type="date" class="form-control" name="end" id="inputEnd">
+            </div>
+            <div class="form-group">
+                <label for="inputEnd">Time</label>
+                <input type="time" class="form-control" name="time" id="inputEnd" required>
+            </div>
+            <div class="form-group ">
+                <label for="inputState">Frequency</label>
+                <select id="inputState" class="form-control" name="frequency">
+                    <option>Twice a Day</option>
+                    <option selected>Daily</option>
+                    <option>Weekly</option>
+                </select>
+            </div>
+                
+            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Create Habit</button>
+            <button type="button" class="btn btn-danger" id="cancel-habit"><i class="fa fa-times"></i> Cancel</button>
+    
+        </form>
+    </div>
+    
+        <button class="btn btn-success" id="btn-add-habit"><i class="fa fa-plus"></i> Add New Habit</button>
+        <a class="btn btn-primary" href="/details" role="button" id="btn-streak"><i class="fa fa-check"></i> Show My Streak</a>
+
+    <!-- list for habits -->
+    <div class="list-container">
+        <ul class="list-group" id="habits">
+            <%for(let i of habit_list){ %>
+            <li class="list-group-item list-group-item-success habit">
+                <div class="card  bormb-3" style="max-width: 18rem;">
+                    <div class="card-header  "><form action="/details/update-habit/?id=<%=i._id%>&day=one&val=<%=i.days.one%>" method="POST" id="streak-container">
+                        <button class="btn btn-change-status" type="submit"><%=i.days.one%></button>
+                    </form>
+                    <a class="btn btn-danger btn-delete" href="/delete-habit/?id=<%=i._id%>">
+                        <i class="fa fa-times"></i> Remove
+                    </a> 
+                </div>
+                    <div class="card-body text-success">
+                      <h5 class="card-title"><%= i.habit %></h5>
+                      <p class="card-text"> <div class="col habit-streak">
+                    
+                        <p class="card-descript"><%=i.description%></p>
+                    
+                        <p class="card-details">Streak :<%=i.streak%>/7</p>
+                    
+                        <p class="card-details"> <%=i.time%> <%=i.frequency%></p>
+                        <%if(i.end!=""){ %>
+                            <p class="card-details">Ending on : <%=i.end%></p>
+                            <%}else{%>
+                            <p class="card-details">Building this forever</p>
+                            <%}%>
+                    </div></p>
+                    </div>
+                    <div class="card-footer "></div>
+                  </div>
+                
+            </li>
+            <%}%>
+          </ul>
+    </div>
+
+</div>
+<script  type="text/javascript" src="/js/home.js"></script>
+</body>
