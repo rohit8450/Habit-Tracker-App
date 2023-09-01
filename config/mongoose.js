@@ -7,5 +7,6 @@
     //Set up default mongoose connection
     const mongoDB = process.env.MONGO_DB_URL;
     mongoose.set("strictQuery", false);
-    module.exports = mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("CONNECTION ESTABLISHED"));
+    module.exports = mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("CONNECTION ESTABLISHED"));
     

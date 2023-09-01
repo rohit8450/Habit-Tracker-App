@@ -24,56 +24,17 @@ This web application helps students to store following details:
 
 ## Features
 
-- **Sign In**
-<p> Employee can Register himself using Google, Github and by entering their required details to Register himself.</p>
+- **Add New Habit**
+<p> User can able to create new habit by entering details such as - habit name, what you want to Achieve, End Date(Optional), Time, Frequency.</p>
 
-- **Sign Up**
-<p> Employee can Login in himself using Google, Github and by manually entering username and password.</p>
+- **Remove Habit**
+<p> User can able to delete the existing habit.</p>
 
-- **Update Profile**
-<p> Employee can Update his profile by changing profile picture, name, email.</p>
+- **Update status of Habit**
+<p> user can able to update status of the habit as  Done, Not Done, Pending.</p>
 
-- **Add Student**
-<p> Employee can create student using Add Student form </p>
-
-- **Show Specific Student Details**
-<p>Employee can view the details of specific student</p>
-
-- **Show All Students List**
-<p>Employee can view the list of students</p>
-
-- **Update Specific Student Details**
-<p>Employee can update the details specific student</p>
-
-- **Delete Specific Student from the List**
-<p>Employee can delete the spefic student from the list of all students</p>
-
-- **Add Interview**
-<p>Employee can create a Interview Slot by specifying the Company Name and Date of Interview</p>
-
-- **Schedule Interview**
-<p>Employee can add students to the interview slot created for a specific company</p>
-
-- **List of all students in an Interview Slot**
-<p>Employee can view the list of all students who have applied for a specific interview slot</p>
-
-- **Update the Result of Student**
-<p>Employee can update the specific student result from the list of all students in an interview slot</p>
-
-- **Delete Student from Interview Slot**
-<p>Employee can delete student from an Interview Slot</p>
-
-- **Delete Interview Slot**
-<p>Employee can delete the created Interview Slot</p>
-
-- **List All Details**
-<p>Employee can view the list of all students along with their allocated interivew slots</p>
-
-- **Download Report in CSV**
-<p>Employee can download report in the CSV format which consists of list of all students details along with their allocated interview details and result of interview</p>
-
-- **Job Portal(External Jobs List)**
-<p>Job Portal consists of details of real time available job openings fetched from the external jobs API. Student can also apply for job opening which will redirected to the jobs portal remotive.com webiste</p>
+- **Show Weekly Summary**
+<p> User can able to check the status of the weekly streak and can also able to update the task as Done, Not Done, Pending.  </p>
 
 
 ## Getting Started With Project
@@ -90,32 +51,13 @@ This web application helps students to store following details:
 ## Library Used
 - connect-flash
 - connect-mongo
-- cookie-parser
-- cross-fetch
-- crypto
-- del
 - dotenv
 - ejs
 - express
 - express-ejs-layouts
 - express-session
-- gulp-cssnano
-- gulp-imagemin
-- gulp-rev
-- gulp-sass
-- gulp-uglify-es
-- json2csv
 - mongoose
-- morgan
-- multer
-- node-sass-middleware
 - nodemon
-- noty
-- passport
-- passport-google-oauth
-- passport-github
-- passport-local
-- rotating-file-stream
 
 - Framework: ExpressJS, Bootstrap
 - Database: MongoDB
@@ -132,10 +74,17 @@ This web application helps students to store following details:
 <p align="justify">
 
 ## Home Page 
-<img src="E:\Skill Test backend\Skill Test-1\Habit Tracking App\assets\screenshots\habitTracking.png">
+<img src="./screenshots/Home.png">
 
-### Details Page
-<img src="E:\Skill Test backend\Skill Test-1\Habit Tracking App\assets\screenshots\details.png">
+### Add New Habit
+<img src="./screenshots/AddHabit.png">
+
+### Display Added Habit
+<img src="./screenshots/DisplayAddedHabit.png">
+
+### Show Weekly Streak
+<img src="./screenshots/ShowWeeklyStreak.png">
+
 
 
 </p>
